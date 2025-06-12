@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
   security-check:
     runs-on: self-hosted
@@ -23,4 +25,4 @@ jobs:
             trivy fs --format table -o fs-report.json .
       - name: Gitleaks Code Scan
         run: | 
-            gitleaks detect --no-git  --source . --config .gitleaks.toml -r gitleaks-report.json -f json --verbose 
+            gitleaks detect --source . --config .gitleaks.toml -r gitleaks-report.json -f json --verbose 
