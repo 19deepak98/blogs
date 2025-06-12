@@ -1,4 +1,4 @@
-name: Hello World Workflow
+name: Flask CI/CD Pipeline
 
 on:
   push:
@@ -6,12 +6,21 @@ on:
       - medium
 
 jobs:
-  say-hello:
+  checkout-code:
     runs-on: self-hosted
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Say Hello
-        run: echo "Hello, World! GitHub Actions is working 🎉"
+  security-check:
+    runs-on: self-hosted
+    needs: checkout-code
+
+    steps:
+      - name: Trivy FS Scan
+        run: |
+            trivy fs --format table -o fs-report.json .
+      - name: Gitleaks Code Scan
+        run: | 
+            gitleaks detect source . -r gitleaks-report.json -f json
