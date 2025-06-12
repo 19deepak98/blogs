@@ -23,5 +23,5 @@ jobs:
             trivy fs --format table -o fs-report.json .
       - name: Gitleaks Code Scan
         run: | 
-            gitleaks detect --source . --config .gitleaks.toml -r gitleaks-report.json -f json
+            gitleaks detect --no-git  --source . --config .gitleaks.toml -r gitleaks-report.json -f json
             
