@@ -7,7 +7,7 @@ on:
 
 jobs:
   say-hello:
-    runs-on: custom-runner
+    runs-on: [custom-runner, X64, ubuntu, amd]
 
     steps:
       - name: Checkout code
