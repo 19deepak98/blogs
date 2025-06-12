@@ -7,6 +7,7 @@ def home():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    API_KEY = "sk_test_51FakeKeyForGitleaksDetection"
+    API_KEY = "sk_test_51FakeKeyFodsrGitleaksDetection"
     passwd = "password123"
+    token = "hkh89dsbb"
     app.run(host="0.0.0.0", port=5000)
