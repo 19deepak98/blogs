@@ -1,0 +1,10 @@
+[[rules]]
+id = "python-hardcoded-credentials"
+description = "Hardcoded credentials in Python files"
+file = '''^(.*?)\.py$'''
+regex = '''(?i)(?:secret|key|token|password|pwd|pass)(?:\w*?)\s*=\s*["'](.{4,120}?)["']'''
+tags = ["credentials", "hardcoded", "python"]
+[[rules.Entropies]]
+  Min = "3"
+  Max = "7"
+  Group = "1"
