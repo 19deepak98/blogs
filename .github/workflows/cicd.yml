@@ -24,3 +24,4 @@ jobs:
       - name: Gitleaks Code Scan
         run: | 
             gitleaks detect --source . --config .gitleaks.toml -r gitleaks-report.json -f json
+            
